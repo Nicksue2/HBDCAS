@@ -354,6 +354,7 @@ body.security-mode {
   /* Ayusin ang Spacing */
   .input-group {
     gap: 2px !important; /* Pagdikitin onti */
+    flex-wrap: wrap !important; /* Allow wrapping on very small screens */
   }
 
   /* Paliitin ang Dash (-) */

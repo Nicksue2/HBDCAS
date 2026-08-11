@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Something....</title>
+    <title>Happy 20th Birthday, Cassy! 🎉</title>
     <link rel="stylesheet" href="style.css" />
     <script>
       if (!localStorage.getItem("auth_success")) {
@@ -28,13 +28,34 @@
     <canvas id="confetti-canvas"></canvas>
 
     <div id="photo-overlay" onclick="closePhoto(event)">
-      <div class="instax-card" onclick="event.stopPropagation()">
-        <img id="instax-img" src="" alt="Memory" />
-        <p id="instax-caption">Caption</p>
+      <div class="close-modal-btn" onclick="closePhoto(event, true)">✖</div>
+      <div class="music-modal-layout">
+        <div class="ios-player">
+          <div class="ios-album-art-container">
+            <img src="CIE.png" class="ios-album-art ios-album-back" alt="Cassy" />
+            <img src="lover-png.jpg" class="ios-album-art ios-album-front" id="album-front" alt="Lover" />
+          </div>
+          <div class="ios-track-info">
+            <h2>Lover</h2>
+            <p>Taylor Swift</p>
+          </div>
+          <div class="ios-progress-bg">
+            <div class="ios-progress-fill" id="audio-progress"></div>
+          </div>
+          <audio id="ios-audio" src="lover-cut.mp3"></audio>
+        </div>
+
+        <div class="lyrics-section">
+          <div id="lyrics-display"></div>
+        </div>
       </div>
 
+      <p class="ps-note">
+        ** I Chose this song because of the lyrics hihi, Happy 20th! 😁 —   nick
+      </p>
+
       <div class="party-decor">
-        <div class="cake-container">
+        <div class="cake-container" onclick="interactCake()">
           <div class="candle-body">
             <div class="flame"></div>
           </div>
@@ -76,22 +97,21 @@
           <div class="envelope">
             <div class="flap"></div>
             <div class="pocket"></div>
+            <div class="seal">C</div>
             <div class="letter">
-              <h1>Happy Birthday Cassy!</h1>
-              <p>
-                Surprise!<br />Hope you have a fantastic birthday!<br />Wishing you the best
-                always.<br />Cheers!
-              </p>
+              <h1 id="letter-h1"></h1>
+              <p id="letter-p"></p>
             </div>
           </div>
         </div>
 
-        <div class="bouquet-wrapper hidden-element" id="bouquet-section">
+        <div
+          class="bouquet-wrapper hidden-element"
+          id="bouquet-section"
+          onclick="showMusic()"
+        >
           <img src="bouquetr.png" class="bouquet-img" alt="Bouquet" />
-          <div class="rose-zone zone-1" onclick="showPhoto(1)"></div>
-          <div class="rose-zone zone-2" onclick="showPhoto(2)"></div>
-          <div class="rose-zone zone-3" onclick="showPhoto(3)"></div>
-          <div class="click-hint">↓ Click flowers ↓</div>
+          <div class="click-hint">↓ Click me ↓</div>
         </div>
       </div>
     </div>
