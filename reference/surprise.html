@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Something....</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      if (!localStorage.getItem("auth_success")) {
+        window.location.href = "index.html";
+      }
+    </script>
+  </head>
+  <body class="party-mode" id="page-surprise">
+    <a
+      href="index.html"
+      class="lock-back-btn hidden-element"
+      id="lock-btn"
+      title="Re-lock System"
+    >
+      <span class="lock-glyph" aria-hidden="true"></span>
+      <span class="lock-caption">Re-lock</span>
+    </a>
+
+    <div class="floating-bg hidden-element" id="bg-elements"></div>
+    <canvas id="confetti-canvas"></canvas>
+
+    <div id="photo-overlay" onclick="closePhoto(event)">
+      <div class="instax-card" onclick="event.stopPropagation()">
+        <img id="instax-img" src="" alt="Memory" />
+        <p id="instax-caption">Caption</p>
+      </div>
+
+      <div class="party-decor">
+        <div class="cake-container">
+          <div class="candle-body">
+            <div class="flame"></div>
+          </div>
+          <div class="cake-body"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="main-content">
+      <div class="flower-container left-1 hidden-element" id="flower-l1">
+        <div class="stem stem-pink"></div>
+        <div class="head head-pink">
+          <div class="center-pink"></div>
+          <div class="petal p1"></div>
+          <div class="petal p2"></div>
+          <div class="petal p3"></div>
+          <div class="petal p4"></div>
+        </div>
+      </div>
+
+      <div class="flower-container left-2 hidden-element" id="flower-l2">
+        <div class="stem stem-yellow"></div>
+        <div class="head head-yellow">
+          <div class="center-yellow"></div>
+          <div class="petal petal-y p1"></div>
+          <div class="petal petal-y p2"></div>
+          <div class="petal petal-y p3"></div>
+          <div class="petal petal-y p4"></div>
+        </div>
+      </div>
+
+      <div class="center-wrapper">
+        <div class="envelope-wrapper" id="envelope">
+          <div class="envelope">
+            <div class="flap"></div>
+            <div class="wax-seal">C</div>
+            <div class="pocket"></div>
+            <div class="letter">
+              <h1>Happy Birthday Cassy</h1>
+              <p>
+                Surprise!<br />Hope you have a fantastic birthday!<br />Wishing you the best
+                always.<br />Cheers!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bouquet-wrapper hidden-element" id="bouquet-section">
+          <div class="mini-bloom bloom-1" onclick="showPhoto(1)" role="button" tabindex="0" aria-label="Show photo 1"><span class="mini-bloom-inner"></span></div>
+          <div class="mini-bloom bloom-2" onclick="showPhoto(2)" role="button" tabindex="0" aria-label="Show photo 2"><span class="mini-bloom-inner"></span></div>
+          <div class="mini-bloom bloom-3" onclick="showPhoto(3)" role="button" tabindex="0" aria-label="Show photo 3"><span class="mini-bloom-inner"></span></div>
+          <div class="click-hint">Touch a bloom</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

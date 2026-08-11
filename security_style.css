@@ -1,0 +1,373 @@
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap");
+
+/* GLOBAL RESET */
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* --- SECURITY THEME (Windows 95) --- */
+body.security-mode {
+  background-color: #008080;
+  font-family: "Courier Prime", monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* WINDOW STYLES - RESPONSIVE WIDTH */
+.system-window {
+  width: 95%; /* Fluid width para sa phone */
+  max-width: 520px; /* Max width para sa PC */
+  background: #c0c0c0;
+  border: 2px solid #fff;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+.window-title-bar {
+  background: #000080;
+  color: white;
+  padding: 6px 8px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Courier Prime", monospace;
+  letter-spacing: 1px;
+}
+.window-controls {
+  display: flex;
+  gap: 2px;
+}
+.control-box {
+  width: 18px;
+  height: 18px;
+  background: #c0c0c0;
+  color: black;
+  border: 1px solid #fff;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+}
+.close-btn:hover {
+  background: #ff0000;
+  color: white;
+  cursor: pointer;
+}
+
+/* BODY CONTENT */
+.window-body {
+  padding: 30px;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.level {
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+.level.active {
+  display: flex;
+  animation: slideUp 0.3s ease;
+}
+
+.sys-msg {
+  color: black;
+  margin-bottom: 20px;
+  font-size: 16px;
+  width: 100%;
+}
+.sys-label {
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: bold;
+  display: block;
+  width: 100%;
+}
+
+/* --- INPUTS --- */
+.input-group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 6px;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.digit-box {
+  width: 40px;
+  height: 45px;
+  background: white;
+  border: 2px solid #808080;
+  border-right-color: #fff;
+  border-bottom-color: #fff;
+  font-family: "Courier Prime", monospace;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  outline: none;
+  caret-color: black;
+  transition: all 0.2s;
+  border-radius: 0;
+}
+
+.digit-box:focus {
+  background: #ffffff;
+  border: 2px solid #000080;
+  box-shadow: 0 0 5px rgba(0, 0, 128, 0.5);
+}
+
+.digit-box.error-state {
+  border-color: red;
+  background-color: #ffe6e6;
+  color: red;
+}
+
+.separator {
+  font-size: 24px;
+  font-weight: bold;
+  color: #404040;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+  user-select: none;
+}
+
+/* BUTTONS */
+.sys-btn {
+  background: #c0c0c0;
+  border: 2px solid #fff;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+  color: black;
+  padding: 10px 30px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: "Courier Prime", monospace;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+.sys-btn:active {
+  border: 2px solid #404040;
+  border-right-color: #fff;
+  border-bottom-color: #fff;
+  transform: translate(2px, 2px);
+}
+
+/* --- UTILS (ITO YUNG FIX) --- */
+.hidden-panel {
+  display: none !important; /* Added !important para sure na tago */
+}
+
+#loading-screen {
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-container {
+  width: 80%;
+  margin: 20px auto;
+  height: 30px;
+  background: #fff;
+  border: 2px solid #808080;
+  border-right-color: #fff;
+  border-bottom-color: #fff;
+  padding: 2px;
+}
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: #000080;
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 40px 40px;
+}
+
+.sys-error {
+  color: red;
+  background: #ffcccc;
+  border: 1px solid red;
+  font-weight: bold;
+  margin-top: 15px;
+  opacity: 0;
+  padding: 5px;
+  display: inline-block;
+  font-size: 12px;
+  transition: opacity 0.2s;
+}
+.sys-hint-link {
+  color: blue;
+  text-decoration: underline;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 20px;
+  display: block;
+}
+.sys-hint-text {
+  font-size: 12px;
+  margin-top: 10px;
+}
+.status-bar {
+  border-top: 2px solid #808080;
+  padding: 5px;
+  font-size: 12px;
+  color: #404040;
+  background: #c0c0c0;
+  text-align: left;
+}
+
+/* --- MODAL (Responsive Fix) --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 5000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(2px);
+}
+.hint-window {
+  width: 350px;
+  max-width: 90%; /* Para hindi lumagpas sa phone screen */
+  box-shadow: 15px 15px 0px rgba(0, 0, 0, 0.5);
+  animation: popIn 0.3s ease;
+}
+.hint-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hint-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+.hint-message {
+  font-size: 18px;
+  font-weight: bold;
+  color: blue;
+  margin-bottom: 20px;
+}
+
+/* ANIMATIONS */
+@keyframes slideUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes popIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.shake {
+  animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-2px, 0, 0);
+  }
+  20%,
+  80% {
+    transform: translate3d(4px, 0, 0);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-6px, 0, 0);
+  }
+  40%,
+  60% {
+    transform: translate3d(6px, 0, 0);
+  }
+}
+
+/* =========================================
+   MOBILE RESPONSIVE FIX (Para lumiit sa phone)
+   ========================================= */
+@media screen and (max-width: 600px) {
+  /* Paliitin ang Window Container */
+  .system-window {
+    width: 95% !important;
+    padding: 5px !important;
+  }
+
+  .window-body {
+    padding: 15px 5px !important; /* Bawasan padding sa gilid */
+  }
+
+  /* Paliitin ang mga Boxes */
+  .digit-box {
+    width: 28px !important; /* From 40px -> 28px */
+    height: 35px !important; /* From 45px -> 35px */
+    font-size: 16px !important; /* Paliitin ang text sa loob */
+    border-width: 1px !important;
+  }
+
+  /* Ayusin ang Spacing */
+  .input-group {
+    gap: 2px !important; /* Pagdikitin onti */
+  }
+
+  /* Paliitin ang Dash (-) */
+  .separator {
+    font-size: 14px !important;
+    margin: 0 1px !important;
+  }
+
+  /* Paliitin ang text instructions */
+  .sys-msg {
+    font-size: 12px !important;
+    margin-bottom: 10px;
+  }
+  .sys-label {
+    font-size: 12px !important;
+  }
+}

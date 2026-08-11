@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>System Verification</title>
+    <link rel="stylesheet" href="security_style.css" />
+  </head>
+  <body class="security-mode" id="page-index">
+    <div class="system-window main-window">
+      <div class="window-title-bar">
+        <span class="title-text">SYSTEM_SECURITY_CHECK.exe</span>
+        <div class="window-controls">
+          <span class="control-box">_</span>
+          <span class="control-box">□</span>
+          <span class="control-box">X</span>
+        </div>
+      </div>
+
+      <div class="window-body">
+        <div id="loading-screen" class="hidden-panel">
+          <p class="sys-msg">PROCESSING DATA...</p>
+          <div class="progress-container">
+            <div class="progress-bar" id="progress-fill"></div>
+          </div>
+          <p class="sys-hint-text" id="loading-text">
+            Verifying credentials...
+          </p>
+        </div>
+
+        <div id="level-1" class="level active">
+          <p class="sys-msg">
+            <strong>WARNING:</strong> Identity Verification Required.
+          </p>
+          <p class="sys-label">Enter Your Date of Birth (MM-DD-YYYY):</p>
+
+          <div class="input-group" id="group-1">
+            <input
+              type="text"
+              class="digit-box"
+              maxlength="1"
+              inputmode="numeric"
+            />
+            <input
+              type="text"
+              class="digit-box"
+              maxlength="1"
+              inputmode="numeric"
+            />
+
+            <span class="separator">-</span>
+
+            <input
+              type="text"
+              class="digit-box"
+              maxlength="1"
+              inputmode="numeric"
+            />
+            <input
+              type="text"
+              class="digit-box"
+              maxlength="1"
+              inputmode="numeric"
+            />
+
+            <span class="separator">-</span>
+
+            <input
+              type="text"
+              class="digit-box"
+              maxlength="1"
+              inputmode="numeric"
+            />
+            <input
+              type="text"
+              class="digit-box"
+              maxlength="1"
+              inputmode="numeric"
+            />
+            <input
+              type="text"
+              class="digit-box"
+              maxlength="1"
+              inputmode="numeric"
+            />
+            <input
+              type="text"
+              class="digit-box"
+              maxlength="1"
+              inputmode="numeric"
+            />
+          </div>
+
+          <button class="sys-btn" onclick="checkFullAnswer(1)">
+            VERIFY >>
+          </button>
+          <div class="sys-error" id="error-1">ACCESS DENIED</div>
+        </div>
+
+        <div id="level-2" class="level">
+          <p class="sys-msg"><strong>CALCULATION CHECK:</strong></p>
+          <p class="sys-label">How old are you today (2026)?</p>
+
+          <div class="input-group" id="group-2">
+            <input
+              type="text"
+              class="digit-box"
+              maxlength="1"
+              inputmode="numeric"
+            />
+            <input
+              type="text"
+              class="digit-box"
+              maxlength="1"
+              inputmode="numeric"
+            />
+          </div>
+
+          <button class="sys-btn" onclick="checkFullAnswer(2)">
+            SUBMIT >>
+          </button>
+          <div class="sys-error" id="error-2">INCORRECT AGE</div>
+        </div>
+
+        <div id="level-3" class="level">
+          <p class="sys-msg"><strong>FINAL AUTHORIZATION:</strong></p>
+          <p class="sys-label">Enter 7-Digit Passcode:</p>
+
+          <div class="input-group" id="group-3">
+            <input type="password" class="digit-box" maxlength="1" />
+            <input type="password" class="digit-box" maxlength="1" />
+            <input type="password" class="digit-box" maxlength="1" />
+            <input type="password" class="digit-box" maxlength="1" />
+            <input type="password" class="digit-box" maxlength="1" />
+            <input type="password" class="digit-box" maxlength="1" />
+            <input type="password" class="digit-box" maxlength="1" />
+          </div>
+
+          <button class="sys-btn" onclick="checkFullAnswer(3)">
+            UNLOCK SYSTEM
+          </button>
+
+          <p class="sys-hint-link" onclick="showHint()">[ CLICK FOR HINT ]</p>
+          <div class="sys-error" id="error-3">INVALID PASSCODE</div>
+        </div>
+      </div>
+
+      <div class="status-bar" id="status-text">
+        Status: Waiting for user input...
+      </div>
+    </div>
+
+    <div
+      id="hint-modal"
+      class="modal-overlay hidden-panel"
+      onclick="closeHint()"
+    >
+      <div class="system-window hint-window" onclick="event.stopPropagation()">
+        <div class="window-title-bar">
+          <span class="title-text">HINT.txt</span>
+          <div class="window-controls">
+            <span class="control-box close-btn" onclick="closeHint()">X</span>
+          </div>
+        </div>
+        <div class="window-body hint-body">
+          <span class="hint-icon">ℹ️</span>
+          <p class="hint-message">YOUR BELL EQ NUMBER :D.</p>
+          <button class="sys-btn small-btn" onclick="closeHint()">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
