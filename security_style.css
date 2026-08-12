@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap");
 
 /* GLOBAL RESET */
+* {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   padding: 0;
@@ -42,6 +45,13 @@ body.security-mode {
   align-items: center;
   font-family: "Courier Prime", monospace;
   letter-spacing: 1px;
+  overflow: hidden;
+}
+.title-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
 }
 .window-controls {
   display: flex;
@@ -228,12 +238,32 @@ body.security-mode {
   transition: opacity 0.2s;
 }
 .sys-hint-link {
-  color: blue;
-  text-decoration: underline;
-  font-size: 12px;
+  display: inline-block;
+  margin-top: 25px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #000080;
+  background-color: #ffff99;
+  border: 2px solid #fff;
+  border-right-color: #808080;
+  border-bottom-color: #808080;
+  text-decoration: none;
   cursor: pointer;
-  margin-top: 20px;
-  display: block;
+  animation: popHint 1.5s infinite alternate;
+}
+.sys-hint-link:hover {
+  background-color: #ffeb3b;
+}
+.sys-hint-link:active {
+  border: 2px solid #808080;
+  border-right-color: #fff;
+  border-bottom-color: #fff;
+  transform: translateY(2px);
+}
+@keyframes popHint {
+  from { transform: scale(1); box-shadow: 0 0 0px transparent; }
+  to { transform: scale(1.05); box-shadow: 0 0 10px #ffff99; }
 }
 .sys-hint-text {
   font-size: 12px;
@@ -345,30 +375,37 @@ body.security-mode {
 
   /* Paliitin ang mga Boxes */
   .digit-box {
-    width: 28px !important; /* From 40px -> 28px */
-    height: 35px !important; /* From 45px -> 35px */
-    font-size: 16px !important; /* Paliitin ang text sa loob */
+    width: 22px !important; /* Shrink even more for Galaxy Fold / small screens */
+    height: 30px !important; 
+    font-size: 16px !important; /* Retain 16px to prevent iOS auto-zoom */
     border-width: 1px !important;
+    padding: 0 !important;
+    min-width: 0 !important;
   }
 
   /* Ayusin ang Spacing */
   .input-group {
     gap: 2px !important; /* Pagdikitin onti */
-    flex-wrap: wrap !important; /* Allow wrapping on very small screens */
+    flex-wrap: nowrap !important; /* FORCE NO WRAP para buo ang MM-DD-YYYY */
+    max-width: 100%;
+    overflow: hidden;
   }
 
   /* Paliitin ang Dash (-) */
   .separator {
     font-size: 14px !important;
     margin: 0 1px !important;
+    min-width: 10px;
   }
 
   /* Paliitin ang text instructions */
   .sys-msg {
-    font-size: 12px !important;
-    margin-bottom: 10px;
+    font-size: 14px !important;
+    margin-bottom: 12px;
+    white-space: normal;
   }
   .sys-label {
-    font-size: 12px !important;
+    font-size: 13px !important;
+    white-space: normal;
   }
 }
